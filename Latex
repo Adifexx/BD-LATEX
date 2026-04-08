@@ -1,0 +1,11 @@
+$Q\leftarrow
+\Pi_{(fname, lname, posse)} (
+\rho_{(posse/start\_date)} (
+sigma_{(dept\_id = 1 \wedge title = 'Teller')}(employee)))$
+
+
+$Q\leftarrow
+\Pi_{(cust\_id)}(
+\sigma_{city = 'Quincy'}(
+{account}\bowtie_{{open\_branch\_id = branch\_id}}{branch}
+))$
