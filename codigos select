@@ -1,0 +1,31 @@
+select fname, lname, dept_id, name
+from employee join department
+using (dept_id);
+
+
+select branch_id, fname, lname, name
+from branch join employee
+on (branch_id = assigned_branch_id)
+
+
+select p.name, product_type_cd, pt.name
+from product p join product_type pt
+using (product_type_cd)
+
+
+select account_id, product_cd, fed_id
+from account a join customer c
+where a.cust_id = c.cust_id
+and cust_type_cd = 'B';
+
+
+select e1.fname, e1.lname, 'VS', e2.fname, e2.lname
+from employee e1 join employee e2
+on e1.emp_id < e2.emp_id
+where e1.title = 'Teller' and e2.title = 'Teller';
+
+
+select a.account_id
+from account a join employee e
+on a.open_date > e.start_date
+where concat(fname,' ', lname) = 'Michael Smith';
