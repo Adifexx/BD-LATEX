@@ -5,12 +5,12 @@ using (dept_id);
 
 select branch_id, fname, lname, name
 from branch join employee
-on (branch_id = assigned_branch_id)
+on (branch_id = assigned_branch_id);
 
 
 select p.name, product_type_cd, pt.name
 from product p join product_type pt
-using (product_type_cd)
+using (product_type_cd);
 
 
 select account_id, product_cd, fed_id
@@ -29,3 +29,35 @@ select a.account_id
 from account a join employee e
 on a.open_date > e.start_date
 where concat(fname,' ', lname) = 'Michael Smith';
+
+
+select name
+from individual join customer c
+using (cust_id)
+join branch b 
+on b.city != c.city
+where concat(fname,' ',lname) = 'John Spencer';
+
+
+select account_id, name, fed_id, birth_date
+from product join account
+using (product_cd)
+join customer
+using (cust_id)
+join individual
+using (cust_id);
+
+
+select e.emp_id, concat(e.fname,' ',e.lname) nome
+from employee e join employee m
+on e.superior_emp_id = m.emp_id
+where e.dept_id != m.dept_id;
+
+
+select concat(o.fname,' ',o.lname) nome_adm, b.name, c.city, a.avail_balance
+from account a
+natural join customer c
+natural join business b
+natural join officer o
+join product p
+using(product_cd);
