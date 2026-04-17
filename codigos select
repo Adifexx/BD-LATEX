@@ -61,3 +61,20 @@ natural join business b
 natural join officer o
 join product p
 using(product_cd);
+
+
+select pt.name, p.name
+from product_type pt left join product p
+using(product_type_cd)
+where p.name is null;
+
+
+select pt.name, p.name
+from product p right join product_type pt
+using(product_type_cd);
+
+
+select m.fname, m.lname, count(e.emp_id) qtd
+from employee m left join employee e
+on e.superior_emp_id = m.emp_id
+group by m.emp_id;
