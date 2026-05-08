@@ -78,3 +78,17 @@ select m.fname, m.lname, count(e.emp_id) qtd
 from employee m left join employee e
 on e.superior_emp_id = m.emp_id
 group by m.emp_id;
+
+
+delimiter $$
+create procedure
+rendimento (in taxa decimal(7,3))
+begin
+update account
+set avail_balance = (avail_balance * ((taxa+100)/100));
+end $$
+delimiter ;
+
+select * from account ;
+
+call rendimento(2.0) ;
